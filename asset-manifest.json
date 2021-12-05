@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-three-chairs/static/css/main.578fa9ab.chunk.css",
-    "main.js": "/react-three-chairs/static/js/main.4842ec34.chunk.js",
-    "main.js.map": "/react-three-chairs/static/js/main.4842ec34.chunk.js.map",
+    "main.js": "/react-three-chairs/static/js/main.1282ad57.chunk.js",
+    "main.js.map": "/react-three-chairs/static/js/main.1282ad57.chunk.js.map",
     "runtime-main.js": "/react-three-chairs/static/js/runtime-main.7c421e1a.js",
     "runtime-main.js.map": "/react-three-chairs/static/js/runtime-main.7c421e1a.js.map",
     "static/js/2.63a98312.chunk.js": "/react-three-chairs/static/js/2.63a98312.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.7c421e1a.js",
     "static/js/2.63a98312.chunk.js",
     "static/css/main.578fa9ab.chunk.css",
-    "static/js/main.4842ec34.chunk.js"
+    "static/js/main.1282ad57.chunk.js"
   ]
 }
