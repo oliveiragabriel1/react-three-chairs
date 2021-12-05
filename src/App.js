@@ -178,7 +178,9 @@ export default function App() {
             modelPath="/armchairYellow.gltf"
             position={250}
           >
-            <span>Basiquinha...</span>
+            <span>Meet the new </span>
+            <span>shopping experience </span>
+            <span>for online chairs</span>
           </HTMLContent>
           <HTMLContent
             domContent={domContent}
@@ -186,20 +188,28 @@ export default function App() {
             modelPath="/armchairGreen.gltf"
             position={0}
           >
-            <span>Moda casual de luxo</span>
+            <span>Shit... we even</span>
+            <span>got different colors</span>
           </HTMLContent>
           <HTMLContent
             domContent={domContent}
-            bgColor="#323232"
+            bgColor="#636567"
             modelPath="/armchairGray.gltf"
             position={-250}
           >
-            <span>Trevosa ...🦇</span>
+            <span>And yes</span>
+            <span>we even got</span>
+            <span>monochrome!</span>
           </HTMLContent>
         </Suspense>
       </Canvas>
       <Loader />
-      <div className="scrollArea" ref={scrollArea} onScroll={onScroll}>
+      <div
+        className="scrollArea"
+        ref={scrollArea}
+        onScroll={onScroll}
+        {...events}
+      >
         <div style={{ position: "sticky", top: 0 }} ref={domContent} />
         <div style={{ height: `${state.pages * 100}vh` }} />
       </div>
