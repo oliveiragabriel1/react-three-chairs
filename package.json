@@ -2,7 +2,6 @@
   "name": "react-three-chair",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://oliveira-gabriel.github.io/react-three-chairs/",
   "dependencies": {
     "@react-spring/web": "^9.3.1",
     "@react-three/drei": "^7.25.4",
