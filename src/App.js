@@ -6,21 +6,21 @@ import React, {
   createRef,
   useContext,
   createContext,
-} from "react";
-import "./App.scss";
+} from "react"
+import "./App.scss"
 
 //
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Html, useProgress, useGLTF } from "@react-three/drei";
-import lerp from "lerp";
+import { Canvas, useFrame, useThree } from "@react-three/fiber"
+import { Html, useProgress, useGLTF } from "@react-three/drei"
+import lerp from "lerp"
 // React Spring
-import { a, useTransition } from "@react-spring/web";
+import { a, useTransition } from "@react-spring/web"
 //Intersection Observer
-import { useInView } from "react-intersection-observer";
+import { useInView } from "react-intersection-observer"
 
 function Model({ url }) {
-  const gltf = useGLTF(url, true);
-  return <primitive object={gltf.scene} dispose={null} />;
+  const gltf = useGLTF(url, true)
+  return <primitive object={gltf.scene} dispose={null} />
 }
 
 // states
@@ -29,43 +29,43 @@ const state = {
   pages: 3,
   zoom: 1,
   top: createRef(),
-};
+}
 
 //section
 
-const offsetContext = createContext(0);
+const offsetContext = createContext(0)
 
 function Section({ children, offset, factor, ...props }) {
-  const { offset: parentOffset, sectionHeight, aspect } = useSection();
-  const ref = useRef();
-  offset = offset !== undefined ? offset : parentOffset;
+  const { offset: parentOffset, sectionHeight, aspect } = useSection()
+  const ref = useRef()
+  offset = offset !== undefined ? offset : parentOffset
   useFrame(() => {
-    const curY = ref.current.position.y;
-    const curTop = state.top.current / aspect;
-    ref.current.position.y = lerp(curY, (curTop / state.zoom) * factor, 0.1);
-  });
+    const curY = ref.current.position.y
+    const curTop = state.top.current / aspect
+    ref.current.position.y = lerp(curY, (curTop / state.zoom) * factor, 0.1)
+  })
   return (
     <offsetContext.Provider value={offset}>
       <group {...props} position={[0, -sectionHeight * offset * factor, 0]}>
         <group ref={ref}>{children}</group>
       </group>
     </offsetContext.Provider>
-  );
+  )
 }
 
 function useSection() {
-  const { sections, pages, zoom } = state;
-  const { size, viewport } = useThree();
-  const offset = useContext(offsetContext);
-  const viewportWidth = viewport.width;
-  const viewportHeight = viewport.height;
-  const canvasWidth = viewportWidth / zoom;
-  const canvasHeight = viewportHeight / zoom;
-  const mobile = size.width < 700;
-  const margin = canvasWidth * (mobile ? 0.2 : 0.1);
-  const contentMaxWidth = canvasWidth * (mobile ? 0.8 : 0.6);
-  const sectionHeight = canvasHeight * ((pages - 1) / (sections - 1));
-  const aspect = size.height / viewportHeight;
+  const { sections, pages, zoom } = state
+  const { size, viewport } = useThree()
+  const offset = useContext(offsetContext)
+  const viewportWidth = viewport.width
+  const viewportHeight = viewport.height
+  const canvasWidth = viewportWidth / zoom
+  const canvasHeight = viewportHeight / zoom
+  const mobile = size.width < 700
+  const margin = canvasWidth * (mobile ? 0.2 : 0.1)
+  const contentMaxWidth = canvasWidth * (mobile ? 0.8 : 0.6)
+  const sectionHeight = canvasHeight * ((pages - 1) / (sections - 1))
+  const aspect = size.height / viewportHeight
   return {
     aspect,
     viewport,
@@ -78,7 +78,7 @@ function useSection() {
     margin,
     contentMaxWidth,
     sectionHeight,
-  };
+  }
 }
 const Lights = () => {
   return (
@@ -102,8 +102,8 @@ const Lights = () => {
       {/* Spotlight Large overhead light */}
       <spotLight intensity={1} position={[1000, 0, 0]} castShadow />
     </>
-  );
-};
+  )
+}
 
 const HTMLContent = ({
   domContent,
@@ -112,14 +112,14 @@ const HTMLContent = ({
   modelPath,
   position,
 }) => {
-  const ref = useRef();
-  useFrame(() => (ref.current.rotation.y += 0.01));
+  const ref = useRef()
+  useFrame(() => (ref.current.rotation.y += 0.01))
   const [refItem, inView] = useInView({
     threshold: 0,
-  });
+  })
   useEffect(() => {
-    inView && (document.body.style.background = bgColor);
-  }, [inView]);
+    inView && (document.body.style.background = bgColor)
+  }, [inView])
   return (
     <Section factor={1.5} offset={1}>
       <group position={[0, position, 0]}>
@@ -133,16 +133,16 @@ const HTMLContent = ({
         </Html>
       </group>
     </Section>
-  );
-};
+  )
+}
 
 function Loader() {
-  const { active, progress } = useProgress();
+  const { active, progress } = useProgress()
   const transition = useTransition(active, {
     from: { opacity: 1, progress: 0 },
     leave: { opacity: 0 },
     update: { progress },
-  });
+  })
   return transition(
     ({ progress, opacity }, active) =>
       active && (
@@ -152,15 +152,15 @@ function Loader() {
           </div>
         </a.div>
       )
-  );
+  )
 }
 
 export default function App() {
-  const [events, setEvents] = useState();
-  const domContent = useRef();
-  const scrollArea = useRef();
-  const onScroll = (e) => (state.top.current = e.target.scrollTop);
-  useEffect(() => void onScroll({ target: scrollArea.current }), []);
+  const [events, setEvents] = useState()
+  const domContent = useRef()
+  const scrollArea = useRef()
+  const onScroll = (e) => (state.top.current = e.target.scrollTop)
+  useEffect(() => void onScroll({ target: scrollArea.current }), [])
 
   return (
     <>
@@ -174,7 +174,7 @@ export default function App() {
         <Suspense fallback={null}>
           <HTMLContent
             domContent={domContent}
-            bgColor="#f15946"
+            bgColor="#F2e"
             modelPath="/armchairYellow.gltf"
             position={250}
           >
@@ -214,5 +214,5 @@ export default function App() {
         <div style={{ height: `${state.pages * 100}vh` }} />
       </div>
     </>
-  );
+  )
 }
