@@ -30,11 +30,11 @@ jobs:
           cacheFile: github-changelog-generator-action.cache
 
       - run: cat CHANGELOG.md
-      # - run: git config --global user.email "ci@example.com"
-      # - run: git config --global user.name "CI"
-      # - run: git commit -m "Update the changelog"
-      # - run: git checkout -b changelog-update
-      # - run: git push origin changelog-update -f
-      # - run: gh pr create --base=master --fill --label=chore || true
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: git config --global user.email "ci@example.com"
+      - run: git config --global user.name "CI"
+      - run: git commit -m "Update the changelog"
+      - run: git checkout -b changelog-update
+      - run: git push origin changelog-update -f
+      - run: gh pr create --base=main --fill --label=chore || true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
