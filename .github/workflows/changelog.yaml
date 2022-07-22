@@ -32,7 +32,7 @@ jobs:
           cacheFile: github-changelog-generator-action.cache
 
       # - run: c2cciutils-checks --fix --check=prettier
-      - run: echo CHANGELOG.md
+      - run: cat CHANGELOG.md
       # - run: git config --global user.email "ci@example.com"
       # - run: git config --global user.name "CI"
       # - run: git commit -m "Update the changelog"
