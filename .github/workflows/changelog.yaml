@@ -19,9 +19,9 @@ jobs:
       # - run: echo "${HOME}/.local/bin" >> ${GITHUB_PATH}
       # - run: python3 -m pip install --user --requirement=ci/requirements.txt
 
-      # - name: Get config
-      # id: config
-      # run: echo ::set-output name=config::$(python -c 'print(__import__("json").dumps(__import__("yaml").load(open(".github/changelog-config.yaml"))))')
+      - name: Get config
+        id: config
+        run: echo ::set-output name=config::$(python -c 'print(__import__("json").dumps(__import__("yaml").load(open(".github/changelog-config.yaml"))))')
 
       - name: Generate changelog
         id: changelog
@@ -31,7 +31,7 @@ jobs:
           configureSections: ${{ steps.config.outputs.config }}
           cacheFile: github-changelog-generator-action.cache
 
-      # - run: c2cciutils-checks --fix --check=prettier
+      - run: c2cciutils-checks --fix --check=prettier
       - run: cat CHANGELOG.md
       # - run: git config --global user.email "ci@example.com"
       # - run: git config --global user.name "CI"
