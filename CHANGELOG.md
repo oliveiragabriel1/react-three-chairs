@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Update the changelog [\#4](https://github.com/oliveira-gabriel/react-three-chairs/pull/4) ([github-actions[bot]](https://github.com/apps/github-actions))
 - chore: test [\#2](https://github.com/oliveira-gabriel/react-three-chairs/pull/2) ([oliveira-gabriel](https://github.com/oliveira-gabriel))
 - chore: remove comments [\#1](https://github.com/oliveira-gabriel/react-three-chairs/pull/1) ([oliveira-gabriel](https://github.com/oliveira-gabriel))
 
